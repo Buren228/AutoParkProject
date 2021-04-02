@@ -17,7 +17,7 @@ public class Stops {
     @Column(name = "stop_name")
     private String stop_name;
     @Column(name = "show_order")
-    private int show_order; //todo поменять на int  в базе и здесь
+    private int show_order;
     @Column(name = "average_waiting_time")
     private int average_waiting_time;
 
