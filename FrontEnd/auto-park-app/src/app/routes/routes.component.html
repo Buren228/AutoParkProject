@@ -1,0 +1,70 @@
+<div class="bg" xmlns:margin-left="http://www.w3.org/1999/xhtml">
+  <div class="header">
+
+    <div class="buttons">
+      <button style="margin-left: 10px;margin-right: 10px;margin-top: 10px;" (click)="goBackToMainMenu()"  matTooltip="Выйти из системы" class="headButton" mat-raised-button
+
+      ><mat-icon>eject</mat-icon></button>
+    </div>
+  </div>
+
+  <div>
+    <!--     все маршруты-->
+    <mat-tab-group >
+      <mat-tab  label="Менеджмент маршрутов">
+        <mat-accordion >
+          <mat-expansion-panel *ngFor="let route of routes" style="width: 50%">
+            <mat-expansion-panel-header class="right-aligned-header">
+              <mat-panel-title>
+                id = {{this.route.route_id}}   Номер маршрута = {{this.route.route_number}}
+              </mat-panel-title>
+              <mat-panel-description  style="">
+                Просмотреть Маршрут
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-card>Длина маршрута = {{this.route.average_length}} (км)</mat-card>
+            <mat-card>Мощность пассажиропотока = {{this.route.average_number_of_passengers}} (сот. п. в ч.)</mat-card>
+            <mat-card>Минимальное кол-во автобусов = {{this.route.min_count_of_buses}}</mat-card>
+
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Количество автобусов на маршруте = {{route.busesId.length}}
+                  </mat-panel-title>
+                  <mat-panel-description  style="">
+                    Просмотреть автобусы
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-card *ngFor="let buses of route.busesId">Id автобуса на машруте = {{buses}}</mat-card>
+              </mat-expansion-panel>
+            </mat-accordion>
+
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <mat-card>Время: {{time|date:'HH:mm'}} {{time.toString()|date:'H'}}</mat-card>
+        <button  mat-raised-button class="empInput" (click)="juggler()">Провести перераспределение</button>
+      </mat-tab>
+      <mat-tab (click)="getAllStops()" label="Вывести все маршруты">
+        <mat-card style="width: 50%" *ngFor="let stops of stops">id = {{this.stops.id}}   Номер маршрута = {{this.stops.route_number}}   Название остановки = {{this.stops.stop_name}}</mat-card>
+      </mat-tab>
+
+<!--     один маршрут-->
+      <mat-tab  label="Найти маршрут по номеру">
+        <mat-form-field class="empInput">
+          <mat-label>Введите имя</mat-label>
+          <input matInput placeholder="Например: 92" [(ngModel)]="number" >
+        </mat-form-field>
+        <button  mat-raised-button class="empInput" (click)="getRouteByNumber()">Найти</button>
+        <div *ngIf="flag">
+          <mat-card style="width: 50%"  *ngFor="let stops of oneRoute">id = {{this.stops.id}}   Номер маршрута = {{this.stops.route_number}} Название остановки = {{this.stops.stop_name}}</mat-card>
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+
+  </div>
+</div>

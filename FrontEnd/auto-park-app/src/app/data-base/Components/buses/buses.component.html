@@ -1,0 +1,98 @@
+<div class="bg" xmlns:margin-left="http://www.w3.org/1999/xhtml">
+  <div class="header">
+
+    <div class="buttons">
+      <button style="margin-left: 10px;margin-right: 10px;margin-top: 10px;" (click)="goBackToMainMenu()"  matTooltip="Назад в меню" class="headButton" mat-raised-button
+
+      ><mat-icon>eject</mat-icon></button>
+    </div>
+  </div>
+
+  <div class="links">
+    <button (click)="goToEmployee()"  style="margin-left: 10px;margin-right: 10px;margin-top: 10px;width: 70px;height: 70px;"  matTooltip="Просмотр сотрудников" mat-raised-button ><mat-icon>accessibility_new</mat-icon></button>
+    <button (click)="goToBuses()" style="margin-left: 10px;margin-right: 10px;margin-top: 10px;width: 70px;height: 70px;"  matTooltip="Просмотр автобусов" mat-raised-button ><mat-icon>directions_bus</mat-icon></button>
+  </div><br>
+  <div>
+    <mat-tab-group>
+      <mat-tab (click)="getAll()" label="Вывести список всех автобусов">
+
+        <mat-accordion >
+          <mat-expansion-panel *ngFor="let buses of buses">
+            <mat-expansion-panel-header class="right-aligned-header">
+              <mat-panel-title>
+                id = {{this.buses.bus_id}}   Номер = {{this.buses.number}}
+              </mat-panel-title>
+              <mat-panel-description  style="">
+                Просмотреть Автобус
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-card>Марка = {{this.buses.mark}}</mat-card>
+            <mat-card>Дата производства = {{this.buses.release_date}}</mat-card>
+            <mat-card>Статус = {{this.buses.status}}</mat-card>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
+
+
+
+
+      </mat-tab>
+
+      <mat-tab  label="Найти автобус по номеру">
+        <mat-form-field class="busInput">
+          <mat-label>Введите номер</mat-label>
+          <input matInput placeholder="Например: а182еп" [(ngModel)]="number" >
+        </mat-form-field>
+        <button  mat-raised-button class="busInput" (click)="getBusByNumber()">Найти</button>
+
+        <mat-accordion *ngIf="flag">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                id = {{this.bus.bus_id}}   Номер = {{this.bus.number}}
+              </mat-panel-title>
+              <mat-panel-description>
+                Просмотреть автобус
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-card>Марка = {{this.bus.mark}}</mat-card>
+            <mat-card>Дата производства = {{this.bus.release_date}}</mat-card>
+            <mat-card>Статус = {{this.bus.status}}</mat-card>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-tab>
+      <mat-tab  label="Добавить автобус">
+        <mat-form-field class="empInput">
+          <mat-label>Введите номер автобуса</mat-label>
+          <input matInput placeholder="Например: а182еп" [(ngModel)]="newBus.number" >
+        </mat-form-field>
+
+        <mat-form-field class="empInput">
+          <mat-label>Введите марку</mat-label>
+          <input matInput placeholder="Например: gaz" [(ngModel)]="newBus.mark" >
+        </mat-form-field>
+        <mat-form-field class="empInput">
+          <mat-label>Введите дату выпуска</mat-label>
+          <input matInput placeholder="Например: 19981203" [(ngModel)]="newBus.release_date" >
+        </mat-form-field>
+
+        <mat-form-field class="empInput">
+          <mat-label>Введите статус</mat-label>
+          <input matInput placeholder="Например: Ivanov" [(ngModel)]="newBus.status" >
+        </mat-form-field>
+
+        <button  mat-raised-button class="empInput" (click)="createBus()" [disabled]="newBus.number!=''&&
+         newBus.mark==''&&
+          newBus.release_date=='' &&
+           newBus.status==''">Создать</button>
+
+
+      </mat-tab>
+
+    </mat-tab-group>
+</div>
+</div>

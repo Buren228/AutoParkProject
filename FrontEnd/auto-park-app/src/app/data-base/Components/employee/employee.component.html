@@ -1,0 +1,124 @@
+<div class="bg" xmlns:margin-left="http://www.w3.org/1999/xhtml">
+  <div class="header">
+
+    <div class="buttons">
+      <button style="margin-left: 10px;margin-right: 10px;margin-top: 10px;" (click)="goBackToMainMenu()"  matTooltip="Назад в меню" class="headButton" mat-raised-button
+
+      ><mat-icon>eject</mat-icon></button>
+    </div>
+  </div>
+
+  <div class="links">
+    <button (click)="goToEmployee()"  style="margin-left: 10px;margin-right: 10px;margin-top: 10px;width: 70px;height: 70px;"  matTooltip="Просмотр сотрудников" mat-raised-button ><mat-icon>accessibility_new</mat-icon></button>
+    <button (click)="goToBuses()" style="margin-left: 10px;margin-right: 10px;margin-top: 10px;width: 70px;height: 70px;"  matTooltip="Просмотр автобусов" mat-raised-button ><mat-icon>directions_bus</mat-icon></button>
+  </div><br>
+  <div>
+    <mat-tab-group>
+      <mat-tab (click)="getAll()" label="Вывести список всех сотрудников">
+
+        <mat-accordion >
+          <mat-expansion-panel *ngFor="let employee of employee" style="width: 50%" >
+            <mat-expansion-panel-header class="right-aligned-header">
+              <mat-panel-title>
+                id = {{this.employee.user_id}}   Имя = {{this.employee.first_name}}   Фамилия = {{this.employee.last_name}}
+              </mat-panel-title>
+              <mat-panel-description  style="">
+                Просмотреть сотрудника
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+              <mat-card>Дата Рождения = {{this.employee.birth_day}}</mat-card>
+              <mat-card>Номер Телефона = {{this.employee.phone_number}}</mat-card>
+              <mat-card>Должность = {{this.employee.job}}</mat-card>
+              <mat-card>Статус = {{this.employee.status}}</mat-card>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
+
+
+
+
+      </mat-tab>
+
+      <mat-tab  label="Найти сотрудника по имени">
+        <mat-form-field class="empInput">
+          <mat-label>Введите имя</mat-label>
+          <input matInput placeholder="Например: Ivan" [(ngModel)]="first_name" >
+        </mat-form-field>
+
+        <mat-form-field class="empInput">
+          <mat-label>Введите Фамилию</mat-label>
+          <input matInput placeholder="Например: Ivanov" [(ngModel)]="last_name" >
+        </mat-form-field>
+        <button  mat-raised-button class="empInput" (click)="getEmployeeByName()">Найти</button>
+
+        <mat-accordion *ngIf="flag">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header style="width: 50%" >
+              <mat-panel-title>
+                id = {{this.oneEmployee.user_id}}   Имя = {{this.oneEmployee.first_name}}   Фамилия = {{this.oneEmployee.last_name}}
+              </mat-panel-title>
+              <mat-panel-description>
+                Просмотреть сотрудника
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-card>Дата Рождения = {{this.oneEmployee.birth_day}}</mat-card>
+            <mat-card>Номер Телефона = {{this.oneEmployee.phone_number}}</mat-card>
+            <mat-card>Должность = {{this.oneEmployee.job}}</mat-card>
+            <mat-card>Статус = {{this.oneEmployee.status}}</mat-card>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-tab>
+      <mat-tab  label="Добавить сотрудника" >
+        <div style="width: 50%">
+          <mat-form-field class="empInput">
+            <mat-label>Введите имя</mat-label>
+            <input matInput placeholder="Например: Ivan" [(ngModel)]="newEmployee.first_name" >
+          </mat-form-field>
+
+          <mat-form-field class="empInput">
+            <mat-label>Введите Фамилию</mat-label>
+            <input matInput placeholder="Например: Ivanov" [(ngModel)]="newEmployee.last_name" >
+          </mat-form-field>
+          <mat-form-field class="empInput">
+            <mat-label>Введите дату рождения</mat-label>
+            <input matInput placeholder="Например: Ivan" [(ngModel)]="newEmployee.birth_day" >
+          </mat-form-field>
+
+          <mat-form-field class="empInput">
+            <mat-label>Введите пол</mat-label>
+            <input matInput placeholder="Например: Ivanov" [(ngModel)]="newEmployee.sex" >
+          </mat-form-field>
+          <mat-form-field class="empInput">
+            <mat-label>номер телефона</mat-label>
+            <input matInput placeholder="Например: Ivan" [(ngModel)]="newEmployee.phone_number" >
+          </mat-form-field>
+
+          <mat-form-field class="empInput">
+            <mat-label>Введите должность</mat-label>
+            <input matInput placeholder="Например: Ivanov" [(ngModel)]="newEmployee.job" >
+          </mat-form-field>
+          <mat-form-field class="empInput">
+            <mat-label>Введите статус</mat-label>
+            <input matInput placeholder="Например: Ivanov" [(ngModel)]="newEmployee.status" >
+          </mat-form-field>
+          <button  mat-raised-button class="empInput" (click)="createEmployee()" [disabled]="newEmployee.first_name!=''&&
+         newEmployee.last_name==''&&
+          newEmployee.birth_day=='' &&
+           newEmployee.sex=='' &&
+            newEmployee.phone_number=='' &&
+             newEmployee.job=='' &&
+              newEmployee.status==''">Создать</button>
+        </div>
+
+
+
+      </mat-tab>
+
+    </mat-tab-group>
+
+  </div>
+</div>

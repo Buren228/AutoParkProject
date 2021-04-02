@@ -1,0 +1,19 @@
+<div class="bg" xmlns:margin-left="http://www.w3.org/1999/xhtml">
+  <div class="header">
+
+    <div class="buttons">
+      <button style="margin-left: 10px;margin-right: 10px;margin-top: 10px;" *ngIf="authVisible()" matTooltip="Авторизация"  class="headButton" mat-icon-button
+
+      ><mat-icon>account_box</mat-icon></button>
+      <button style="margin-left: 10px;margin-right: 10px;margin-top: 10px; " (click)="goToDataBasePage()" matTooltip="База данных" class="headButton" mat-icon-button
+
+      ><mat-icon>book</mat-icon></button>
+      <button style="margin-left: 10px;margin-right: 10px;margin-top: 10px;" (click)="goToRoutesPage()" matTooltip="Маршруты" class="headButton" mat-icon-button
+
+      ><mat-icon>commute</mat-icon></button>
+      <button style="margin-left: 10px;margin-right: 10px;margin-top: 10px;" (click)="deleteCookie()" matTooltip="Выйти из системы" class="headButton" mat-raised-button
+
+      ><mat-icon>eject</mat-icon></button>
+    </div>
+  </div>
+</div>
