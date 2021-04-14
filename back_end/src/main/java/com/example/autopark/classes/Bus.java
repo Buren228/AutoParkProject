@@ -77,7 +77,7 @@ public class Bus {
     @JsonProperty
     public List<Integer> getEmployeeId()
     {
-        return employee.stream().map(Employee::getUser_id).collect(Collectors.toList());
+        return employee.stream().map(Employee::getId).collect(Collectors.toList());
     }
     @JsonProperty
     public List<Integer> getRouteId()
