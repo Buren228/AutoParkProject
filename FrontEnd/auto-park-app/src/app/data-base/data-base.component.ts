@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CookieNames} from "../models/CookieNames";
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
+import {CheckUserUtil} from "../utils/checkUserUtil";
 
 @Component({
   selector: 'app-data-base',
@@ -10,23 +11,21 @@ import {CookieService} from 'ngx-cookie-service';
 })
 export class DataBaseComponent implements OnInit {
 
-  constructor(private routes:Router,private cookies: CookieService) { }
+  constructor(private routes:Router,
+              private cookies: CookieService,
+              private checkUserUtil: CheckUserUtil) { }
 
   ngOnInit(): void {
-    this.checkUser()
+    this.checkUserUtil.checkUser()
   }
 
-  checkUser(){
-    if(this.cookies.get(CookieNames.USER)==null && this.cookies.get(CookieNames.ROLE)==null)
-      this.routes.navigate(['auth']);
-    else if(this.cookies.get(CookieNames.ROLE)=="driver"||this.cookies.get(CookieNames.ROLE)=="controller")  this.routes.navigate(['menu']);
-  }
+
 
   goBackToMainMenu() {
     this.routes.navigate(['menu']);
   }
- goToEmployee(){
-   this.routes.navigate(['emp']);
+ goToUsers(){
+   this.routes.navigate(['users']);
  }
  goToBuses(){
    this.routes.navigate(['buses']);

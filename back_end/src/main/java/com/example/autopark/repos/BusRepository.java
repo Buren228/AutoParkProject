@@ -18,6 +18,6 @@ public interface BusRepository extends CrudRepository<Bus,Integer> {
 
 
     );
-    @Query("select e from buses e")
+    @Query("select b from buses b")
     Bus[] getAll();
 }

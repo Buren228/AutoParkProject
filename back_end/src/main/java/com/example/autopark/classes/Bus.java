@@ -15,7 +15,7 @@ public class Bus {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "buses")
-    private Set<Employee> employee = new HashSet<>();
+    private Set<User> user = new HashSet<>();
 
     @JsonIgnore
     @ManyToMany(mappedBy = "buses1")
@@ -75,9 +75,9 @@ public class Bus {
     }
 
     @JsonProperty
-    public List<Integer> getEmployeeId()
+    public List<Integer> getUserId()
     {
-        return employee.stream().map(Employee::getId).collect(Collectors.toList());
+        return user.stream().map(User::getId).collect(Collectors.toList());
     }
     @JsonProperty
     public List<Integer> getRouteId()

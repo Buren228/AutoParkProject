@@ -4,7 +4,7 @@ import {CookieService} from 'ngx-cookie-service';
 import {CookieNames} from "../../../models/CookieNames";
 import {BusesService} from "../../../services/bus.service";
 import {Buses} from "../../../models/Buses";
-import {EmployeeService} from "../../../services/employee.service";
+import {UserService} from "../../../services/user.service";
 import {Employee} from "../../../models/Employee";
 
 @Component({

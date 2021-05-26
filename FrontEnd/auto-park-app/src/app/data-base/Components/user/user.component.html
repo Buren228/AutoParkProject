@@ -9,7 +9,7 @@
   </div>
 
   <div class="links">
-    <button (click)="goToEmployee()"  style="margin-left: 10px;margin-right: 10px;margin-top: 10px;width: 70px;height: 70px;"  matTooltip="Просмотр сотрудников" mat-raised-button ><mat-icon>accessibility_new</mat-icon></button>
+    <button (click)="getAll()"  style="margin-left: 10px;margin-right: 10px;margin-top: 10px;width: 70px;height: 70px;"  matTooltip="Просмотр сотрудников" mat-raised-button ><mat-icon>accessibility_new</mat-icon></button>
     <button (click)="goToBuses()" style="margin-left: 10px;margin-right: 10px;margin-top: 10px;width: 70px;height: 70px;"  matTooltip="Просмотр автобусов" mat-raised-button ><mat-icon>directions_bus</mat-icon></button>
   </div><br>
   <div>
@@ -17,20 +17,20 @@
       <mat-tab (click)="getAll()" label="Вывести список всех сотрудников">
 
         <mat-accordion >
-          <mat-expansion-panel *ngFor="let employee of employee" style="width: 50%" >
+          <mat-expansion-panel *ngFor="let user of user" style="width: 50%" >
             <mat-expansion-panel-header class="right-aligned-header">
               <mat-panel-title>
-                id = {{this.employee.user_id}}   Имя = {{this.employee.first_name}}   Фамилия = {{this.employee.last_name}}
+                id = {{this.user.id}}   Имя = {{this.user.first_name}}   Фамилия = {{this.user.last_name}}
               </mat-panel-title>
               <mat-panel-description  style="">
                 Просмотреть сотрудника
               </mat-panel-description>
             </mat-expansion-panel-header>
 
-              <mat-card>Дата Рождения = {{this.employee.birth_day}}</mat-card>
-              <mat-card>Номер Телефона = {{this.employee.phone_number}}</mat-card>
-              <mat-card>Должность = {{this.employee.job}}</mat-card>
-              <mat-card>Статус = {{this.employee.status}}</mat-card>
+              <mat-card>Дата Рождения = {{this.user.birth_day}}</mat-card>
+              <mat-card>Номер Телефона = {{this.user.phone_number}}</mat-card>
+              <mat-card>Должность = {{this.user.job}}</mat-card>
+              <mat-card>Статус = {{this.user.status}}</mat-card>
 
           </mat-expansion-panel>
         </mat-accordion>
@@ -41,7 +41,7 @@
 
       </mat-tab>
 
-      <mat-tab  label="Найти сотрудника по имени">
+      <!--<mat-tab  label="Найти сотрудника по имени">
         <mat-form-field class="empInput">
           <mat-label>Введите имя</mat-label>
           <input matInput placeholder="Например: Ivan" [(ngModel)]="first_name" >
@@ -117,7 +117,7 @@
 
 
       </mat-tab>
-
+-->
     </mat-tab-group>
 
   </div>

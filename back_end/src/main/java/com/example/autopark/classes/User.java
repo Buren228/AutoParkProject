@@ -12,10 +12,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Data
-@Entity(name = "employee")
-@Table(name = "employee")
+@Entity(name = "user")
+@Table(name = "user")
 
-public class Employee {
+public class User {
     @Id
     @GeneratedValue
     @Column(name = "id")
@@ -24,7 +24,7 @@ public class Employee {
     @JsonIgnore
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
-            name = "driver_bus",
+            name = "user_bus",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "bus_id")}
     )
@@ -43,8 +43,8 @@ public class Employee {
     @Column(name = "job")
     private String job;
 
-    @Column(name = "login")
-    private String login;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "password")
     private String password;
@@ -57,7 +57,7 @@ public class Employee {
 
     @JsonIgnore
     @ManyToMany
-    @JoinTable(name = "employee_roles", joinColumns = @JoinColumn(name = "user_id"),
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
@@ -65,8 +65,8 @@ public class Employee {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return Objects.equals(id, employee.id);
+        User user = (User) o;
+        return Objects.equals(id, user.id);
     }
 
     @Override

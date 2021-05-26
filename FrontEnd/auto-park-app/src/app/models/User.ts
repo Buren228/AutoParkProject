@@ -1,17 +1,34 @@
-import {Roles} from "./Roles";
+export class User {
+  public id: number;
+  public first_name: string;
+  public last_name: string;
+  public birth_day: string;
+  public sex: number;
+  public phone_number: number;
+  public job: string;
+  public username: string;
+  public password: string;
+  public status: number;
 
-export class User{
-  public id:number;
-  public login:string;
-  public password:string;
-  public role:Roles;
   constructor(id,
-              login,
+              first_name,
+              last_name,
+              birth_day,
+              sex,
+              phone_number,
+              job,
+              username,
               password,
-              role)
-  {this.id=id;
-  this.login=login;
-  this.password=password;
-  this.role=role;
+              status) {
+    this.id = id;
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.birth_day = birth_day;
+    this.sex = sex;
+    this.phone_number = phone_number;
+    this.job = job;
+    this.username = username;
+    this.password = password;
+    this.status = status;
   }
 }

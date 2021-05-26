@@ -17,7 +17,7 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { DispetcherMenuComponent } from './dispatcher-menu/dispetcher-menu.component';
 import { DataBaseComponent } from './data-base/data-base.component';
 import { RoutesComponent } from './routes/routes.component';
-import { EmployeeComponent } from './data-base/Components/employee/employee.component';
+import { UserComponent } from './data-base/Components/user/user.component';
 import { BusesComponent } from './data-base/Components/buses/buses.component';
 import {MatListModule} from '@angular/material/list';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -33,7 +33,7 @@ const routes: Routes = [
   {path: 'dmenu', component: DispetcherMenuComponent},
   {path: 'routes', component: RoutesComponent},
   {path: 'db', component: DataBaseComponent},
-  {path: 'emp', component: EmployeeComponent},
+  {path: 'users', component: UserComponent},
   {path: 'buses', component: BusesComponent},
 ];
 
@@ -46,7 +46,7 @@ const routes: Routes = [
     DispetcherMenuComponent,
     DataBaseComponent,
     RoutesComponent,
-    EmployeeComponent,
+    UserComponent,
     BusesComponent,
   ],
   imports: [

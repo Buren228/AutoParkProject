@@ -16,7 +16,7 @@ values (6, 15),
        (20, 10),
        (21, 2);
 
-insert employee (first_name, last_name, birth_day, sex, phone_number, job, login,password, status)
+insert user (first_name, last_name, birth_day, sex, phone_number, job, username ,password, status)
 values ('adminFirstName', 'adminSecondName', 19980320, 1, 89211232323, 'admin','admin','admin', 1)
 # ,
 
@@ -50,7 +50,7 @@ VALUES (1, 'ROLE_ADMIN'),
        (4, 'ROLE_CONTROLLER')
 ;
 
-INSERT INTO employee_roles(user_id,role_id)
+INSERT INTO users_roles(user_id,role_id)
 VALUES (1,1);
 
 insert Routes (route_number, average_number_of_passengers, average_length)
@@ -104,7 +104,7 @@ values (1, 1),
        (16, 3),
        (17, 3);
 
-# insert driver_bus (user_id, bus_id)
+# insert user_bus (user_id, bus_id)
 # values (2, 1),
 #        (3, 1),
 #        (4, 2),
