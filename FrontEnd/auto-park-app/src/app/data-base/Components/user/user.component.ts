@@ -38,7 +38,7 @@ export class UserComponent implements OnInit {
   }
 
   goToUser() {
-    this.routes.navigate(['emp']);
+    this.routes.navigate(['user']);
   }
 
   goToBuses() {
