@@ -34,18 +34,6 @@ export class AuthComponent implements OnInit {
 
   fillUsers() {
     this.userService.getAll().subscribe((data: User[]) => this.users = data);
-    // this.users[0]=new User(1,"admin","admin",Roles.ADMIN)
-    // this.users[1]=new User(2,"ivan","password",Roles.DISPATCHER)
-    // this.users[2]=new User(3,"dmitry","password",Roles.DISPATCHER)
-    // this.users[3]=new User(4,"angela","password",Roles.CONTROLLER)
-    // this.users[4]=new User(5,"sergey","password",Roles.DRIVER)
-    // this.users[5]=new User(6,"valera","password",Roles.DRIVER)
-    // this.users[6]=new User(7,"vladimir","password",Roles.DRIVER)
-    // this.users[7]=new User(8,"andrey","password",Roles.DRIVER)
-    // this.users[8]=new User(9,"evgeny","password",Roles.CONTROLLER)
-    // this.users[9]=new User(10,"konstantin","password",Roles.CONTROLLER)
-    // this.users[10]=new User(11,"boris","password",Roles.CONTROLLER)
-
   }
 
   findUser() {
@@ -58,11 +46,5 @@ export class AuthComponent implements OnInit {
 
     }
 
-  }
-
-  authVisible(): boolean {
-    if (this.cookies.get(CookieNames.ROLE) == "admin" || this.cookies.get(CookieNames.ROLE) == "driver" || this.cookies.get(CookieNames.ROLE) == "controller" || this.cookies.get(CookieNames.ROLE) == "dispatcher")
-      return false;
-    else return true;
   }
 }

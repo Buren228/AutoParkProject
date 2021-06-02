@@ -55,11 +55,6 @@ public class User {
     @Column(name = "status")
     private String status;
 
-    @JsonIgnore
-    @ManyToMany
-    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
 
     @Override
     public boolean equals(Object o) {
@@ -79,8 +74,4 @@ public class User {
         return buses.stream().map(Bus::getBus_id).collect(Collectors.toList());
     }
 
-    @JsonProperty
-    public List<Integer> getRoleId() {
-        return roles.stream().map(Role::getId).collect(Collectors.toList());
-    }
 }
