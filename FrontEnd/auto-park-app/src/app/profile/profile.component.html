@@ -1,0 +1,93 @@
+<div class="bg">
+  <div class="header">
+    <div class="buttons">
+      <button style="margin-left: 10px;margin-right: 10px;margin-top: 10px;" (click)="goBackToMainMenu()"
+              matTooltip="Главное меню" class="headButton" mat-icon-button
+
+      >
+        <mat-icon>home</mat-icon>
+      </button>
+      <button style="margin-left: 10px;margin-right: 10px;margin-top: 10px;" (click)="goToDataBasePage()"
+              matTooltip="База данных" class="headButton" mat-icon-button
+
+      >
+        <mat-icon>book</mat-icon>
+      </button>
+      <button style="margin-left: 10px;margin-right: 10px;margin-top: 10px;" (click)="goToRoutesPage()"
+              matTooltip="Маршруты" class="headButton" mat-icon-button
+
+      >
+        <mat-icon>commute</mat-icon>
+      </button>
+      <button style="margin-left: 10px;margin-right: 10px;margin-top: 10px;" (click)="goBackToMainMenu()"
+              matTooltip="Выйти в главное меню" class="headButton" mat-raised-button
+
+      >
+        <mat-icon>eject</mat-icon>
+      </button>
+    </div>
+
+  </div>
+  <div class="profile_page">
+
+    <mat-card class="profile">
+
+      <mat-card-title>
+        Профиль
+      </mat-card-title>
+
+      <table>
+        <tr>
+          <td align="right">
+            ФИО :
+          </td>
+          <td>
+            {{user.last_name}} {{user.first_name}}
+          </td>
+        </tr>
+        <tr>
+          <td align="right">Дата рождения :</td>
+          <td>{{userUtil.getUserBirthDay(user)}}</td>
+        </tr>
+        <tr>
+          <td align="right">Пол :</td>
+          <td>{{userUtil.getUserSex(user)}}</td>
+        </tr>
+        <tr>
+          <td align="right">Мобильный телефон :</td>
+          <td>{{user.phone_number}}</td>
+        </tr>
+        <tr>
+          <td align="right">Статус :</td>
+          <td>{{userUtil.getUserStatus(user)}}</td>
+        </tr>
+      </table>
+    </mat-card>
+
+    <mat-card *ngIf="roleSwitchVisible()" class="role_switch">
+      <mat-card-header>
+        <mat-card-title>
+          Смена роли
+        </mat-card-title>
+      </mat-card-header>
+      <mat-form-field appearance="fill">
+        <mat-label>Выберите роль для теста</mat-label>
+        <mat-select [(value)]="role">
+          <mat-option value=admin>Администратор</mat-option>
+          <mat-option value="dispatcher">Диспетчер</mat-option>
+          <mat-option value="driver">Водитель</mat-option>
+          <mat-option value="controller">Кондуктор</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-card-actions>
+        <button (click)="switchRole()">Сменить роль</button>
+      </mat-card-actions>
+      <mat-card-content>
+        <p>Ваша роль сейчас: {{myRole}}
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+</div>
+

@@ -36,31 +36,6 @@ public class Bus {
     @Column(name = "status")
     private String status;
 
-//    public String toJSON() {
-//        List<Integer> user_id=employee.stream().map(Employee::getUser_id).collect(Collectors.toList());
-//        String user_ids="\"user_id\":[";
-//        for (int i = 0; i < user_id.size(); i++) {
-//            if(user_ids.length()>0)
-//            {
-//                user_ids+=",";
-//            }
-//            user_ids+=user_id.get(i);
-//        }
-//        user_ids+="]";
-//        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-//        String result = "";
-//        result = "{"
-//                + "\"bus_id\":"+bus_id+","
-//                + "\"number\":\""+number+"\","
-//                + "\"mark\":\""+mark+"\","
-//                + "\"release_date\":\""+((release_date != null)?sdf.format(release_date):"")+"\","
-//                + "\"status\":\""+status+"\","
-//                + user_ids+","
-//                + "}";
-//
-//        return (result.replace("\"null\"", "\"\"").replace("&quot;", "\\\""));
-//    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

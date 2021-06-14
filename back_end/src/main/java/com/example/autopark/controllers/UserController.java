@@ -19,7 +19,7 @@ public class UserController {
 //        return userRepository.getByName(first_name, last_name);
 //    }
 
-    @RequestMapping("/{id}")
+    @RequestMapping("getById/{id}")
     public User getUserById(@PathVariable("id") int id) {
         return userRepository.getById(id);
     }

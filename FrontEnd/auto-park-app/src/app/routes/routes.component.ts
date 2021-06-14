@@ -14,6 +14,7 @@ import {formatDate } from '@angular/common';
 import {formatI18nPlaceholderName} from "@angular/compiler/src/render3/view/i18n/util";
 import {Buses} from "../models/Buses";
 import {BusesService} from "../services/bus.service";
+import {UserUtil} from "../utils/UserUtil";
 
 
 @Component({
@@ -40,7 +41,8 @@ export class RoutesComponent implements OnInit {
               private routeService:RouteService,
               private passengerTrafficHourService:PassengerTrafficHourService,
               private busesNRoutesService:BusesNRoutesService,
-              private busesService:BusesService) { }
+              private busesService:BusesService,
+              private userUtil:UserUtil) { }
 
   ngOnInit(): void {
 
@@ -49,12 +51,7 @@ export class RoutesComponent implements OnInit {
     this.getTrafficInfo();
     this.getBusesNRoutesCom();
     this.getAllBuses();
-    this.checkUser();
-  }
-
-  checkUser(){
-    if(this.cookies.get(CookieNames.USER)==null && this.cookies.get(CookieNames.ROLE)==null)
-      this.router.navigate(['auth']);
+    this.userUtil.checkUser();
   }
 
   goBackToMainMenu() {

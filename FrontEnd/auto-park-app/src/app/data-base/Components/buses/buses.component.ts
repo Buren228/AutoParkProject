@@ -6,6 +6,7 @@ import {BusesService} from "../../../services/bus.service";
 import {Buses} from "../../../models/Buses";
 import {UserService} from "../../../services/user.service";
 import {Employee} from "../../../models/Employee";
+import {UserUtil} from "../../../utils/UserUtil";
 
 @Component({
   selector: 'app-buses',
@@ -17,30 +18,25 @@ export class BusesComponent implements OnInit {
   buses: Buses[];
   bus:Buses;
   number:string;
-  newBus=new Buses();
+  newBus:Buses;
 flag:boolean=false;
   constructor(private routes: Router,
               private cookies: CookieService,
-              private busesService: BusesService) {
+              private busesService: BusesService,
+              private userUtil: UserUtil,) {
   }
 
   ngOnInit(): void {
     this.getAll();
-    this.checkUser();
-  }
-
-  checkUser() {
-    if (this.cookies.get(CookieNames.USER) == null && this.cookies.get(CookieNames.ROLE) == null)
-      this.routes.navigate(['auth']);
-    else if (this.cookies.get(CookieNames.ROLE) == "driver" || this.cookies.get(CookieNames.ROLE) == "controller") this.routes.navigate(['menu']);
+    this.userUtil.checkUser();
   }
 
   goBackToMainMenu() {
     this.routes.navigate(['menu']);
   }
 
-  goToEmployee() {
-    this.routes.navigate(['emp']);
+  goToUsers() {
+    this.routes.navigate(['user']);
   }
 
   goToBuses() {

@@ -9,11 +9,10 @@
   </div>
 
   <div class="links">
-    <button (click)="goToEmployee()"  style="margin-left: 10px;margin-right: 10px;margin-top: 10px;width: 70px;height: 70px;"  matTooltip="Просмотр сотрудников" mat-raised-button ><mat-icon>accessibility_new</mat-icon></button>
+    <button (click)="goToUsers()"  style="margin-left: 10px;margin-right: 10px;margin-top: 10px;width: 70px;height: 70px;"  matTooltip="Просмотр сотрудников" mat-raised-button ><mat-icon>accessibility_new</mat-icon></button>
     <button (click)="goToBuses()" style="margin-left: 10px;margin-right: 10px;margin-top: 10px;width: 70px;height: 70px;"  matTooltip="Просмотр автобусов" mat-raised-button ><mat-icon>directions_bus</mat-icon></button>
   </div><br>
   <div>
-    {{buses[1].number}}
     <mat-tab-group>
       <mat-tab (click)="getAll()" label="Вывести список всех автобусов">
 
@@ -30,6 +29,7 @@
 
             <mat-card>Марка = {{this.buses.mark}}</mat-card>
             <mat-card>Дата производства = {{this.buses.release_date}}</mat-card>
+            <mat-card>Кол-во сидячих мест = {{this.buses.seats_count}}</mat-card>
             <mat-card>Статус = {{this.buses.status}}</mat-card>
 
           </mat-expansion-panel>
@@ -86,10 +86,11 @@
           <input matInput placeholder="Например: Ivanov" [(ngModel)]="newBus.status" >
         </mat-form-field>
 
-        <button  mat-raised-button class="empInput" (click)="createBus()" [disabled]="newBus.number!=''&&
-         newBus.mark==''&&
-          newBus.release_date=='' &&
-           newBus.status==''">Создать</button>
+<!--        <button  mat-raised-button class="empInput" (click)="createBus()" [disabled]="newBus.number!=''&&-->
+<!--         newBus.mark==''&&-->
+<!--          newBus.release_date=='' &&-->
+<!--          newBus.seats_count=='' &&-->
+<!--           newBus.status==''">Создать</button>-->
 
 
       </mat-tab>

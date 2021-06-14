@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import {Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
 import {CookieNames} from "../models/CookieNames";
-import {CheckUserUtil} from "../utils/checkUserUtil";
+import {UserUtil} from "../utils/UserUtil";
 
 // @ts-ignore
 @Component({
@@ -14,7 +14,7 @@ export class AdminMenuComponent implements OnInit {
 
   constructor(private routes:Router,
               private cookies: CookieService,
-              private checkUserUtil: CheckUserUtil,) { }
+              private checkUserUtil: UserUtil,) { }
 
   ngOnInit(): void {
     this.checkUserUtil.checkUser();

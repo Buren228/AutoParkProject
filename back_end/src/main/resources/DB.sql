@@ -17,7 +17,10 @@ values (6, 15),
        (21, 2);
 
 insert user (first_name, last_name, birth_day, sex, phone_number, job, username ,password, status)
-values ('adminFirstName', 'adminSecondName', 19980320, 1, 89211232323, 'admin','admin','admin', 1)
+values ('adminFirstName', 'adminLastName', '1998-03-20', 1, 89211232323, 'admin','admin','admin', 1),
+       ('driverFirstname','driverLastName',19900102,1,89111111112,'driver','driver','driver',1),
+       ('dispatcherFirstname','dispatcherLastName',19900102,1,89111111113,'dispatcher','dispatcher','dispatcher',1),
+       ('controllerFirstname','controllerLastName',19900102,1,89111111114,'controller','controller','controller',1)
 # ,
 
 #        ('Ivan', 'Ivanov', 19871115, 1, 89216458912, 'driver', 1),

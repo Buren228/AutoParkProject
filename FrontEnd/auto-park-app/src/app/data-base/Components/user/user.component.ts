@@ -4,7 +4,7 @@ import {CookieService} from 'ngx-cookie-service';
 import {CookieNames} from "../../../models/CookieNames";
 import {UserService} from "../../../services/user.service";
 import {User} from "../../../models/User";
-import {CheckUserUtil} from "../../../utils/checkUserUtil";
+import {UserUtil} from "../../../utils/UserUtil";
 
 
 @Component({
@@ -24,22 +24,19 @@ export class UserComponent implements OnInit {
   constructor(private routes: Router,
               private cookies: CookieService,
               private userService: UserService,
-              private checkUserUtil: CheckUserUtil) {
+              private userUtil: UserUtil,) {
   }
 
 
   ngOnInit(): void {
     this.getAll();
-    this.checkUserUtil.checkUser();
+    this.userUtil.checkUser();
   }
 
   goBackToMainMenu() {
     this.routes.navigate(['menu']);
   }
 
-  goToUser() {
-    this.routes.navigate(['user']);
-  }
 
   goToBuses() {
     this.routes.navigate(['buses']);
@@ -53,15 +50,4 @@ export class UserComponent implements OnInit {
   );
     console.log(this.user);
   }
-
-  // createUser() {
-  //   this.userService.createUser(this.newUser).subscribe(
-  //     x => {
-  //       console.log(x);
-  //       this.getAll();
-  //     }, error => {
-  //       console.log(error);
-  //     }
-  //   )
-  // }
 }

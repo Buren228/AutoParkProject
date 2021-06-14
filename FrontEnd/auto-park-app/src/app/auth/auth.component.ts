@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {CookieNames} from "../models/CookieNames";
 import {UserService} from "../services/user.service";
-import {CheckUserUtil} from "../utils/checkUserUtil";
+import {UserUtil} from "../utils/UserUtil";
 
 @Component({
   selector: 'app-auth',
@@ -21,14 +21,14 @@ export class AuthComponent implements OnInit {
   constructor(private routes: Router,
               private cookies: CookieService,
               private userService: UserService,
-              private checkUserUtil: CheckUserUtil) {
+              private checkUserUtil: UserUtil) {
   }
 
   ngOnInit(): void {
 
     this.fillUsers();
     this.checkUserUtil.checkUser();
-
+    this.checkUserUtil.authAlready();
 
   }
 
@@ -41,7 +41,10 @@ export class AuthComponent implements OnInit {
       if (this.users[i].username == this.username && this.users[i].password == this.password) {
         this.cookies.set(CookieNames.USER, this.users[i].username);
         this.cookies.set(CookieNames.ROLE, this.users[i].job);
+        this.cookies.set(CookieNames.ACTUAL_ROLE, this.users[i].job);
+        this.cookies.set(CookieNames.USER_ID, this.users[i].id.toString());
         this.checkUserUtil.checkUser();
+        this.routes.navigate(['menu'])
       }
 
     }
